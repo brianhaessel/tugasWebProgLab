@@ -1,0 +1,24 @@
+.imageShowH {
+ height: 100%;
+
+ margin: auto;
+ position: relative;
+ top: 0px;
+ left: 0px;
+ 
+}
+
+#postSection {
+ margin: auto;
+ height: auto;
+ display: flex;
+ flex-wrap: wrap;
+ padding-top: 10px;
+}
+
+.post {
+ background-position: center;
+ padding: 5px;
+ 
+ display: inline-block;
+}
