@@ -13,10 +13,18 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('transaction_date');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -26,6 +34,7 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('transaction_details');
         Schema::dropIfExists('transactions');
     }
 }

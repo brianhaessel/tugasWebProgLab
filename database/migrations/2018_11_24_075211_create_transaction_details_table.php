@@ -13,10 +13,19 @@ class CreateTransactionDetailsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('transaction_id');
+            $table->unsignedInteger('post_id');
             $table->timestamps();
+
+            $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('users')->onDelete('cascade');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
