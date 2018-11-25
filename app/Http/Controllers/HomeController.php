@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $det = User::find(1)->comments();
         $users = User::all();
         return view('home', compact('users'));
     }
