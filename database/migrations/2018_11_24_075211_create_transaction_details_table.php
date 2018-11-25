@@ -22,7 +22,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->timestamps();
 
             $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
-            $table->foreign('post_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
 
         Schema::enableForeignKeyConstraints();
