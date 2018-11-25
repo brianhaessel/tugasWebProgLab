@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
+use App\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,9 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $det = User::find(1)->comments();
-        $users = User::all();
-        return view('home', compact('users'));
+        $posts = Post::paginate(10);
+        return view('home', compact('posts'));
     }
 
 //     public function search(Request $request){

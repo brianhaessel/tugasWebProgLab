@@ -36,16 +36,17 @@
     <div class="container">
         <div class="row">
             <div class="contentSeg" id="postSection" >
-                @foreach($users as $user)
+                @foreach($posts as $post)
                     <div class="post" >
-                        <a href="{{ 'storage/'.$user->profile_picture }}" target="_blank">
-                            <img src="{{ 'storage/'.$user->profile_picture }}" width="300" height="300" />
+                        <a href="{{ 'storage/'.$post->image }}" target="_blank">
+                            <img src="{{ 'storage/'.$post->image }}" width="256" height="256" />
                         </a>
-                        <p>{{$user->name}}</P>
+                        <p>{{ $post->title }}</p>
+                        <p>{{ $post->user->name }}</p>
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
-
+    {{ $posts->links() }}
 @endsection
