@@ -39,28 +39,27 @@
                         <!-- {{ config('app.name', 'Laravel') }} -->
                     </a>
                     <form action="" method="GET">
-                     <input id="search" type="text" class="form-control" name="search" value="{{ old('search') }}" required autofocus>
-                     <button type="submit">Search</button>
-                 </form>
-             </div>
+                        <input id="search" type="text" class="form-control" name="search" value="{{ old('search') }}" required autofocus>
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
 
-             <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
 
-                    <!-- Left Side Of Navbar 
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+                <!-- Left Side Of Navbar 
+                <ul class="nav navbar-nav">
+                    &nbsp;
+                </ul>
+                -->
+                <!-- Right Side Of Navbar -->
 
-                    <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-
-                        @guest
-
+                    @guest
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
+                    @else
                         <li><a href="{{ url('/home') }}">Cart</a></li>
                         <li><a href="{{ url('/home') }}">My Post</a></li>
                         welcome, {{ Auth::user()->name }}
@@ -76,14 +75,14 @@
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     Logout
-                                </a>
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
                     @endguest
                 </ul>
             </div>
