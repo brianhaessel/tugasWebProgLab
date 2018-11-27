@@ -8,12 +8,13 @@
  
 }
 
-#postSection {
+.contentSeg {
  margin: auto;
  height: auto;
  display: flex;
  flex-wrap: wrap;
  padding-top: 10px;
+ text-align: center;
 }
 
 .post {
