@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\Category;
+use App\User;
 
 class CategorySeeder extends Seeder
 {
@@ -19,6 +20,13 @@ class CategorySeeder extends Seeder
         $this->newCategory('Futuristic');
         $this->newCategory('Potrait');
         $this->newCategory('Still');
+
+        $users = User::all();
+        Category::all()->each(function($category) use($users) {
+            $category->followedBy()->attach(
+                $users->random(random_int(0, 5))->pluck('id')->toArray()
+            );
+        });
     }
 
     private function newCategory(string $name) {
