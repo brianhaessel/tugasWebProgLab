@@ -14,10 +14,11 @@
                     <a href="{{ url('/followed_categories') }}">Filter by My Followed Categories</a>
                 @elseif (Route::currentRouteName() == 'followed_catagories')
                     <a href="{{ url('/home') }}">View All</a>
-                @elseif (Route::currentRouteName() == 'search')
-                    <p>Search result for {{ old('search') }}</p>
                 @endif
             @endauth
+            @if (Route::currentRouteName() == 'search')
+                <p>Search result for {{ old('search') }}</p>
+            @endif
             <div class="contentSeg" >
                 <div>
                     @foreach($posts as $post)
