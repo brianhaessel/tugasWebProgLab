@@ -65,7 +65,7 @@
                             <label for="gender" class="col-md-4 control-label">Gender</label>
 
                             <div class="col-md-6">
-                                <select name="gender">
+                                <select name="gender" class="form-control">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
@@ -76,7 +76,7 @@
                             <label for="image" class="col-md-4 control-label">Photo</label>
 
                             <div class="col-md-6">
-                               <input type="file" name="image">
+                               <input type="file" name="image" >
                             </div>
                         </div>
 
