@@ -25,9 +25,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+   
     }
-
+    public function add(){
+        return view('insertpost');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -36,8 +38,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       // $storeImage = $request->file('image')->store('images');
+       //  // dd($request->gender);
+       //  $post = new Post();
+       //  $post->title = $request->title;
+       //  $post->caption = $request->caption;
+       //  $post->price = $request->price;
+       //  $post->image = $storeImage;
+       //  $post->save();
+        return redirect('/myposts');
     }
+
 
     /**
      * Display the specified resource.

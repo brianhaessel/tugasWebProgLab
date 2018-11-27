@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="container">
-    <form action="" method="GET">
+    <form action="{{url('/add')}}" method="GET">
                         
                         <button type="submit">+ ADD</button>
                     </form>
