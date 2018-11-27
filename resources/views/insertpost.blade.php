@@ -8,8 +8,6 @@
          <p>Caption: <input type="text" name="caption"></p>
          <p>Price Rp: <input type="text" name="price"></p>
          <p>Photo: <input type="file" name="image"></p>
-
-         <!-- <p>Repeat Password: <input type="repeat" name="repeat"></p> -->
          <p>Category:
             <select name="category">
                 <option value="Landscape">Landscape</option>

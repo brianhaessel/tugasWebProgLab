@@ -38,14 +38,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-       // $storeImage = $request->file('image')->store('images');
-       //  // dd($request->gender);
-       //  $post = new Post();
-       //  $post->title = $request->title;
-       //  $post->caption = $request->caption;
-       //  $post->price = $request->price;
-       //  $post->image = $storeImage;
-       //  $post->save();
+        // $storeImage = $request->file('image')->store('images');
+        // // dd($request->gender);
+        // $post = new Post();
+        // $post->title = $request->title;
+        // $post->caption = $request->caption;
+        // $post->price = $request->price;
+        // $post->image = $storeImage;
+        // $post->save();
+
+        // $category = new Category();
+        // $category->name = $request->category;
+        // $category->save();
         return redirect('/myposts');
     }
 
