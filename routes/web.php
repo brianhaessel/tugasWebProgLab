@@ -13,13 +13,11 @@
 
 
 Auth::routes();
-
+Route::get('/', function() {
+	return redirect('home');
+});
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/search', 'HomeController@search');
 Route::get('/cart', 'TransactionController@index')->name('cart');
 Route::get('/myposts', 'PostController@index')->name('myposts');
 Route::get('/add', 'PostController@add');
 Route::get('/insert', 'PostController@store');
-Route::get('/', function() {
-	return redirect('home');
-});

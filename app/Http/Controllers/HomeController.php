@@ -32,7 +32,8 @@ class HomeController extends Controller
             $posts = Post::where('title', 'LIKE', '%'.$search.'%')->orWhere('caption', 'LIKE', '%'.$search.'%')->paginate(10);
         }
 
-        return view('home', compact('posts'));
+        $request->flashOnly('search');
+        return view('home', compact('posts'))->withInput($request->except('password'));
     }
 
 //     public function search(Request $request){

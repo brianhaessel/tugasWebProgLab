@@ -38,8 +38,8 @@
                         Pintester
                         <!-- {{ config('app.name', 'Laravel') }} -->
                     </a>
-                    <form action="/home" method="GET">
-                        <input id="search" type="text" class="form-control" name="search" value="{{ old('search') }}" required autofocus>
+                    <form action="" method="GET">
+                        <input id="search" type="text" class="form-control" name="search" value="{{ old('search') }}" placeholder="Search a post" required autofocus>
                         <button type="submit">Search</button>
                     </form>
                 </div>
