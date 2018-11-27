@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function transactions() {
         return $this->hasMany('App\Transaction');
     }
+
+    public function followedCategories() {
+        return $this->belongsToMany('App\FollowCategory', 'follow_categories');
+    }
 }

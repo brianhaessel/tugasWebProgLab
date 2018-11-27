@@ -11,4 +11,8 @@ class Category extends Model
         return $this->belongsToMany('App\Post', 'post_category_details');
     }
 
+    public function followedBy() {
+        return $this->belongsToMany('App\User', 'follow_categories');
+    }
+
 }
