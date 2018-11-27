@@ -23,18 +23,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        $posts = Post::paginate(10);
+
+        return view('home', compact('posts'));
+    }
+
+    public function search(Request $request) {
         $search = $request->search;
+        $request->flashOnly('search');
 
         if ($search == null) {
-            $posts = Post::paginate(10);
+            return redirect('home');
         } else {
             $posts = Post::where('title', 'LIKE', '%'.$search.'%')->orWhere('caption', 'LIKE', '%'.$search.'%')->paginate(10);
+            return view('home', compact('posts'))->withInput($request->except('password'));
         }
-
-        $request->flashOnly('search');
-        return view('home', compact('posts'))->withInput($request->except('password'));
     }
 
     public function followedCategories() {

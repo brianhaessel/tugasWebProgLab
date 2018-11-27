@@ -17,7 +17,8 @@ Route::get('/', function() {
 	return redirect('home');
 });
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/followed_categories', 'HomeController@followedCategories')->name('followed_caragories');
+Route::get('/home/search', 'HomeController@search')->name('search');
+Route::get('/followed_categories', 'HomeController@followedCategories')->name('followed_catagories');
 Route::get('/cart', 'TransactionController@index')->name('cart');
 Route::get('/myposts', 'PostController@index')->name('myposts');
 Route::get('/add', 'PostController@add');

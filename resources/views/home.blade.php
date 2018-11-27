@@ -12,8 +12,10 @@
             @auth
                 @if (Route::currentRouteName() == 'home')
                     <a href="{{ url('/followed_categories') }}">Filter by My Followed Categories</a>
-                @else
+                @elseif (Route::currentRouteName() == 'followed_catagories')
                     <a href="{{ url('/home') }}">View All</a>
+                @elseif (Route::currentRouteName() == 'search')
+                    <p>Search result for {{ old('search') }}</p>
                 @endif
             @endauth
             <div class="contentSeg" >
@@ -27,9 +29,11 @@
                             <p>{{ $post->user->name }}</p>
                         </div>
                     @endforeach
+                    <div>
+                        {{ $posts->links() }}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    {{ $posts->links() }}
 @endsection
