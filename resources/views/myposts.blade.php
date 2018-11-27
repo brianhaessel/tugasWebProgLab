@@ -7,29 +7,28 @@
 
 
 @section('content')
-<div class="container">
-    <form action="{{url('/add')}}" method="GET">
-                        
-                        <button type="submit">+ ADD</button>
-                    </form>
-</div>
-<div class="container">
-    <div class="row">
-
-        <div class="contentSeg" id="postSection" >
-
-         @foreach($posts as $post)
-         <div class="post" >
-            <a href="{{ 'storage/'.$post->image }}" target="_blank">
-                <img src="{{ 'storage/'.$post->image }}" width="256" height="256" />
-            </a>
-            <p>{{ $post->title }}</p>
-            <p>{{ $post->user->name }}</p>
-        </div>
-        @endforeach
+    <div class="container">
+        <form action="{{url('/add')}}" method="GET">
+            <button type="submit">+ ADD</button>
+        </form>
     </div>
-</div>
-</div>
+    <div class="container">
+        <div class="row">
+
+            <div class="contentSeg" id="postSection" >
+
+                @foreach($posts as $post)
+                    <div class="post" >
+                        <a href="{{ 'storage/'.$post->image }}" target="_blank">
+                            <img src="{{ 'storage/'.$post->image }}" width="256" height="256" />
+                        </a>
+                        <p>{{ $post->title }}</p>
+                        <p>{{ $post->user->name }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 {{ $posts->links() }}
 
-                @endsection
+@endsection
