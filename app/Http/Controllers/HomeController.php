@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -21,9 +22,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::paginate(10);
+        $search = $request->search;
+
+        if ($search == null) {
+            $posts = Post::paginate(10);
+        } else {
+            $posts = Post::where('title', 'LIKE', '%'.$search.'%')->orWhere('caption', 'LIKE', '%'.$search.'%')->paginate(10);
+        }
+
         return view('home', compact('posts'));
     }
 
