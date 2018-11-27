@@ -54,6 +54,11 @@ class PostController extends Controller
         return redirect('/myposts');
     }
 
+    public function view($id) {
+        $post = Post::find($id);
+        return view('post', compact('post'));
+    }
+
 
     /**
      * Display the specified resource.

@@ -21,3 +21,4 @@ Route::get('/cart', 'TransactionController@index')->name('cart');
 Route::get('/myposts', 'PostController@index')->name('myposts');
 Route::get('/add', 'PostController@add');
 Route::get('/insert', 'PostController@store');
+Route::get('/post/{id}', 'PostController@view');
