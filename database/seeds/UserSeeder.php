@@ -14,20 +14,20 @@ class UserSeeder extends Seeder
     public function run()
     {
         $this->newUser('admin', 'admin');
+        $this->newUser('member', 'user');
 
         factory(User::class, 5)->create();
     }
 
     private function newUser(string $role, string $name) {
         $user = new User();
-        $randomStr = str_random(10);
 
         $user->role = $role;
-        $user->name = $name.$randomStr;
-        $user->email = $name.$randomStr.'@yahoo.com';
-        $user->password = bcrypt($name.$randomStr);
+        $user->name = $name;
+        $user->email = $name.'@yahoo.com';
+        $user->password = bcrypt($name);
         $user->gender = 'Male';
-        $user->profile_picture = $name.$randomStr.'.png';
+        $user->profile_picture = $name.'.png';
 
         $user->save();
     }
