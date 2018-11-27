@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -34,6 +35,22 @@ class HomeController extends Controller
 
         $request->flashOnly('search');
         return view('home', compact('posts'))->withInput($request->except('password'));
+    }
+
+    public function followedCategories() {
+        $categories = Auth::user()->followedCategories;
+        $categoriesIds = [];
+
+        foreach ($categories as $cat) {
+            array_push($categoriesIds, $cat->id);
+        }
+
+        $posts = Post::whereHas('categories', function($q) use ($categoriesIds) {
+            $q->whereIn('category_id', $categoriesIds);
+        })->paginate(10);
+
+
+        return view('home', compact('posts'));
     }
 
 //     public function search(Request $request){

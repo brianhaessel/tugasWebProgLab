@@ -10,7 +10,11 @@
     <div class="container">
         <div class="row">
             @auth
-                <a href="{{ url('/followed_categories') }}">Filter by My Followed Categories</a>
+                @if (Route::currentRouteName() == 'home')
+                    <a href="{{ url('/followed_categories') }}">Filter by My Followed Categories</a>
+                @else
+                    <a href="{{ url('/home') }}">View All</a>
+                @endif
             @endauth
             <div class="contentSeg" >
                 <div>
