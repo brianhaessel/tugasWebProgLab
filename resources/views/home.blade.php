@@ -8,7 +8,24 @@
 
 @section('content')
 @guest
-
+<div class="container">
+    <div class="row">
+        
+        <div class="contentSeg" id="postSection" >
+            
+         @foreach($posts as $post)
+         <div class="post" >
+            <a href="{{ 'storage/'.$post->image }}" target="_blank">
+                <img src="{{ 'storage/'.$post->image }}" width="256" height="256" />
+            </a>
+            <p>{{ $post->title }}</p>
+            <p>{{ $post->user->name }}</p>
+        </div>
+        @endforeach
+    </div>
+</div>
+</div>
+{{ $posts->links() }}
 @else
 
 
@@ -30,16 +47,14 @@
                             </div>
                         </div>
                     </div> -->
-                    
-
-                    @endguest
 
                     <div class="container">
                         <div class="row">
+                            <a href="{{ url('/home') }}">Filter by My Followed Categories</a>
                             <div class="contentSeg" id="postSection" >
-
-                               @foreach($posts as $post)
-                               <div class="post" >
+                                
+                             @foreach($posts as $post)
+                             <div class="post" >
                                 <a href="{{ 'storage/'.$post->image }}" target="_blank">
                                     <img src="{{ 'storage/'.$post->image }}" width="256" height="256" />
                                 </a>
@@ -51,4 +66,7 @@
                     </div>
                 </div>
                 {{ $posts->links() }}
+                @endguest
+
+
                 @endsection
