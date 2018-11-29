@@ -59,6 +59,11 @@ class HomeController extends Controller
         return view('home', compact('posts'));
     }
 
+    public function myPosts() {
+        $posts = Auth::user()->posts()->paginate(5);
+        return view('home', compact('posts'));
+    }
+
 //     public function search(Request $request){
 //     $category = $request->input('category');
 

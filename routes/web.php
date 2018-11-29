@@ -20,7 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/search', 'HomeController@search')->name('search');
 Route::get('/followed_categories', 'HomeController@followedCategories')->name('followed_catagories');
 Route::get('/cart', 'TransactionController@index')->name('cart');
-Route::get('/myposts', 'PostController@index')->name('myposts');
+Route::get('/myposts', 'HomeController@myPosts')->name('myposts');
 Route::get('/add', 'PostController@add');
 Route::post('/insert', 'PostController@store');
 Route::get('/post/{id}', 'PostController@view');
