@@ -25,3 +25,5 @@ Route::get('/add', 'PostController@add');
 Route::post('/insert', 'PostController@store');
 Route::get('/post/{id}', 'PostController@view');
 Route::post('/addComment', 'PostController@addComment');
+Route::get('/profile', 'UserController@profile');
+Route::get('/followedCategories', 'UserController@followedCategories');

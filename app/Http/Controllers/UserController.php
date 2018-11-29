@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function welcome() {
@@ -31,5 +32,14 @@ class UserController extends Controller
     	$user->save();
     	return redirect('/');
 
+    }
+    public function profile(){
+        $user = Auth::user();
+        return view('profile', compact('user'));
+
+    }
+    public function followedCategories(){
+        $user = Auth::user();
+        return view('followedCategories',compact('user'));
     }
 }

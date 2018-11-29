@@ -23,3 +23,7 @@
  
  display: inline-block;
 }
+
+.pp {
+	border-radius: 50%;
+}

@@ -21,7 +21,8 @@
                        </table>         
                        <div class="container">
             <div class="row">
-                <button type="submit" class="btn btn-primary">Profile</button> <a href="{{ url('/followedCategories') }}">Categories</a>
+               	<a href="{{ url('/profile') }}">Profile</a>
+                <button type="submit" class="btn btn-primary">Categories</button>
             </div>
 
         </div>
