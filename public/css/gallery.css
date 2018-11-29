@@ -28,3 +28,24 @@
 .pp {
 	border-radius: 50%;
 }
+
+.postDet {
+	margin: auto;
+	width: 70%;
+	background-color: #DDDDDD;
+	padding: 10px;
+}
+
+.postImage {
+	text-align: center;
+}
+
+.postImage img {
+	max-height: 720px;
+}
+
+.comment {
+	background-color: white;
+	padding: 4px;
+	border-bottom: 1px gray solid;
+}

@@ -40,7 +40,7 @@ class PostController extends Controller
         $post_comments->post_id = $request->post_id;
         $post_comments->save();
         // return redirect('post', [$post->id]);
-        return redirect('/');
+        return back();
     }
     /**
      * Store a newly created resource in storage.
