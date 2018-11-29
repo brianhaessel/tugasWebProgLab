@@ -30,7 +30,8 @@ class PostController extends Controller
    
     }
     public function add(){
-        return view('insertpost');
+        $categories = Category::all();
+        return view('insertpost', compact('categories'));
     }
     public function addComment(Request $request){
         $post_comments = new PostComment();
@@ -49,6 +50,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $validation = $request->validate([
+            'title' => 'required|string|min:20|max:200',
+            'caption' => 'required',
+            'price' => 'integer',
+            'photo' => 'required|mimes:jpeg,png,jpg',
+            'category' => 'required'
+        ]);
+
         $storeImage = $request->file('image')->store('images');
         // dd($request->gender);
         $post = new Post();

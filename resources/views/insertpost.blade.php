@@ -2,23 +2,90 @@
 
 
 @section('content')
-<form action="/brian/public/insert" method="post" enctype="multipart/form-data">
-    {{ csrf_field() }}
-    <p>Title: <input type="text" name="title"></p>
-    <p>Caption: <input type="text" name="caption"></p>
-    <p>Price Rp: <input type="text" name="price"></p>
-    <p>Photo: <input type="file" name="image"></p>
-    <p>Category:
-    <select name="category[]">
-        <option value="Landscape">Landscape</option>
-        <option value="Abstract">Abstract</option>
-        <option value="Futuristic">Futuristic</option>
-        <option value="Potrait">Potrait</option>
-        <option value="Still">Still</option>
-    </select></p>
-    
-    <button type="submit">ADD</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal" action="/insert" method="post" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        
+                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                            <label for="title" class="col-md-4 control-label">Title</label>
 
-</form>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="title" value="{{ old('title') }}" required autofocus>
 
+                                @if ($errors->has('title'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('title') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('caption') ? ' has-error' : '' }}">
+                            <label for="caption" class="col-md-4 control-label">Caption</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="caption" value="{{ old('caption') }}" required autofocus>
+                                
+                                @if ($errors->has('caption'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('caption') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
+                            <label for="price" class="col-md-4 control-label">Price Rp.</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="price" value="{{ old('price') }}" required autofocus>
+                                
+                                @if ($errors->has('price'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('price') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
+                            <label for="photo" class="col-md-4 control-label">Photo</label>
+
+                            <div class="col-md-6">
+                                <input type="file" class="form-control" name="photo" value="{{ old('photo') }}" required autofocus>
+                                
+                                @if ($errors->has('photo'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('photo') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
+                            <label for="category" class="col-md-4 control-label">Category</label>
+
+                            <div class="col-md-6">
+                                <select name="category" class="form-control">
+                                    @foreach ($categories as $cat)
+                                        <option value="{{ $cat->name }}">{{ $cat->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    ADD
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

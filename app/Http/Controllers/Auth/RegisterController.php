@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed|alpha_num',
             'gender' => 'required',
-            'image' => 'required|image' // <-- BLOM ADA MIME VALIDATION
+            'image' => 'required|mimes:jpeg,png,jpg'
         ]);
     }
 
