@@ -41,7 +41,7 @@
 }
 
 .postImage img {
-	max-height: 720px;
+	max-width: 100%;
 }
 
 .comment {

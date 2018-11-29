@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\PostCategoryDetail;
 use App\Category;
 use App\PostComment;
 class PostController extends Controller
@@ -54,11 +53,12 @@ class PostController extends Controller
             'title' => 'required|string|min:20|max:200',
             'caption' => 'required',
             'price' => 'integer',
-            'photo' => 'required|mimes:jpeg,png,jpg',
+            'image' => 'required|mimes:jpeg,png,jpg',
             'category' => 'required'
         ]);
 
-        $storeImage = $request->file('image')->store('images');
+        $storeImage = $request->file('image')->storeAs('', $request->file('image')->getClientOriginalName().time(), 'public');
+
         // dd($request->gender);
         $post = new Post();
         $post->title = $request->title;
@@ -66,12 +66,8 @@ class PostController extends Controller
         $post->price = $request->price;
         $post->image = $storeImage;
         $post->user_id = Auth::user()->id;
+        $post->category_id = Category::where('name', $request->category)->first()->id;
         $post->save();
-
-        $category_detail = new PostCategoryDetail();
-        $category_detail->post_id = $post->id;
-        $category_detail->category_id = Category::where('name', $request->category)->first()->id;
-        $category_detail->save();
 
         return redirect('/myposts');
     }
@@ -83,6 +79,13 @@ class PostController extends Controller
         return view('post', compact('post','post_comments'));
     }
 
+
+    public function delete(Request $request) {
+        $post = Post::where('id', $request->post_id);
+        $post->delete();
+
+        return redirect('/myposts');
+    }
 
     /**
      * Display the specified resource.
@@ -126,6 +129,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+
     }
 }

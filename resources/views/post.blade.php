@@ -15,7 +15,11 @@
 				<button type="submit">Add to Cart</button>
 			@endif
 			@if (Gate::check('isAdmin') || Auth::id() === $post->user_id)
-				<button type="submit">Delete Post</button>
+				<form action="/deletePost" method="post">
+					{{ csrf_field() }}
+					<input type="hidden" name="post_id" value="{{ $post->id }}">
+					<button type="submit">Delete Post</button>
+				</form>
 			@endif
 		@endauth
 

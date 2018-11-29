@@ -27,3 +27,4 @@ Route::get('/post/{id}', 'PostController@view');
 Route::post('/addComment', 'PostController@addComment');
 Route::get('/profile', 'UserController@profile');
 Route::get('/followedCategories', 'UserController@followedCategories');
+Route::post('/deletePost', 'PostController@delete');
