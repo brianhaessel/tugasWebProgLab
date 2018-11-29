@@ -10,8 +10,14 @@
 <div class="container">
 	<div>
 		@auth
-
-		<h1>{{ Auth::user()->name }}</h1>  <button type="submit">Add to Cart</button>
+			@can('isAdmin')
+			<h1>{{ Auth::user()->name }}</h1>  <button type="submit">Add to Cart</button><button type="submit">Delete Post</button>
+			@endcan
+			@if(Auth::id() !== $post->user_id)
+			<h1>{{ Auth::user()->name }}</h1>  <button type="submit">Add to Cart</button>
+			@else
+			<h1>{{ Auth::user()->name }}</h1>  <button type="submit">Delete Post</button>
+			@endif
 
 		@endauth
 
@@ -19,7 +25,8 @@
 		<img src="{{ 'storage/'.$post->image }}" width="300" height="300" />
 		<h2>{{ $post->title }}</h3>
 			<p>{{ $post->caption }}</p>
-			<p>{{'Comment'}}</p>
+			@auth
+			<p><b>Comment</b></p>
 			@foreach($post_comments as $comment)
 			<p>{{ $comment->comment}}</p>
 			@endforeach
@@ -32,6 +39,7 @@
 					Submit
 				</button>
 			</form>
+			@endauth
 		</div>
 	</div>
 	@endsection
