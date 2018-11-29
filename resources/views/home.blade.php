@@ -15,9 +15,11 @@
                 @elseif (Route::currentRouteName() == 'followed_catagories')
                     <a href="{{ url('/home') }}">View All</a>
                 @elseif (Route::currentRouteName() == 'myposts')
-                    <form action="{{url('/add')}}" method="GET">
-                        <button type="submit">+ ADD</button>
-                    </form>
+                    <div class="contentSeg" >
+                        <form action="{{url('/add')}}" method="GET">
+                            <button type="submit">+ ADD</button>
+                        </form>
+                    </div>
                 @endif
             @endauth
             @if (Route::currentRouteName() == 'search')
