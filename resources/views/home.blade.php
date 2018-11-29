@@ -2,7 +2,7 @@
 
 @section('extraHead')
 <!-- <link rel="icon" href="images/ProjectHCI_64x64_Logo.png"> -->
-<link rel="stylesheet" type="text/css" href="/css/gallery.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/gallery.css') }}">
 @endsection
 
 

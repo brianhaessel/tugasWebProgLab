@@ -60,6 +60,31 @@
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
+                        @can('isAdmin')
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    Manage <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="">Users</a>
+                                        <a href="">Categories</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    View <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="">View All Transaction</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endcan
                         <li><a href="{{ url('/cart') }}">Cart</a></li>
                         <li><a href="{{ url('/myposts') }}">My Post</a></li>
                         welcome, {{ Auth::user()->name }}
