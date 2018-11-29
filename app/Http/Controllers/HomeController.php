@@ -31,6 +31,7 @@ class HomeController extends Controller
     }
 
     public function search(Request $request) {
+        // dd("ASD");
         $search = $request->search;
         $request->flashOnly('search');
 

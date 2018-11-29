@@ -27,15 +27,26 @@
                         <div class="row">
                             <!-- <a href="{{ url('/home') }}">Filter by My Followed Categories</a> -->
                             <div class="contentSeg" id="postSection" >
-                             Items in cart: {{ '0'}}
-                         </div>
-                         
-                     </div>
-                 </div>
-             </div>
-             <div class="container">
-                <div class="row">
-                    Total Price: Rp. {{ '0'}}
+                               Items in cart: {{ '0'}}
+                           </div>
+
+                       </div>
+                   </div>
+
+                   <div class="container">
+                    <div class="row">
+                        <!-- <a href="{{ url('/home') }}">Filter by My Followed Categories</a> -->
+                        <div class="contentSeg" id="postSection" >
+                          a
                 </div>
+
             </div>
-            @endsection
+        </div>
+
+        <div class="container">
+            <div class="row">
+                Total Price: Rp. {{ '0'}} <button type="submit">Checkout</button>
+            </div>
+
+        </div>
+        @endsection

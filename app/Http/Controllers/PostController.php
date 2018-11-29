@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\PostCategoryDetail;
+use App\Category;
+use App\PostComment;
 class PostController extends Controller
 {
     /**
@@ -31,6 +33,15 @@ class PostController extends Controller
     public function add(){
         return view('insertpost');
     }
+    public function addComment(Request $request){
+        $post_comments = new PostComment();
+        $post_comments->comment = $request->comment;
+        $post_comments->user_id = Auth::user()->id;
+        $post_comments->post_id = $request->post_id;
+        $post_comments->save();
+        // return redirect('post', [$post->id]);
+        return redirect('/');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -39,24 +50,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // $storeImage = $request->file('image')->store('images');
-        // // dd($request->gender);
-        // $post = new Post();
-        // $post->title = $request->title;
-        // $post->caption = $request->caption;
-        // $post->price = $request->price;
-        // $post->image = $storeImage;
-        // $post->save();
+        $storeImage = $request->file('image')->store('images');
+        // dd($request->gender);
+        $post = new Post();
+        $post->title = $request->title;
+        $post->caption = $request->caption;
+        $post->price = $request->price;
+        $post->image = $storeImage;
+        $post->user_id = Auth::user()->id;
+        $post->save();
 
-        // $category = new Category();
-        // $category->name = $request->category;
-        // $category->save();
+        $category_detail = new PostCategoryDetail();
+        $category_detail->post_id = $post->id;
+        $category_detail->category_id = Category::where('name', $request->category)->first()->id;
+        $category_detail->save();
+
         return redirect('/myposts');
     }
 
     public function view($id) {
         $post = Post::find($id);
-        return view('post', compact('post'));
+        $post_comments = PostComment::where('post_id', $id)->get();
+
+        return view('post', compact('post','post_comments'));
     }
 
 
