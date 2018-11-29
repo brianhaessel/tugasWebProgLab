@@ -23,8 +23,8 @@
                 <div>
                     @foreach($posts as $post)
                         <div class="post" >
-                            <a href="{{ 'post/'.$post->id }}">
-                                <img src="{{ 'storage/'.$post->image }}" width="256" height="256" />
+                            <a href="{{ '/post/'.$post->id }}">
+                                <img src="{{ '/storage/'.$post->image }}" width="256" height="256" />
                             </a>
                             <p>{{ $post->title }}</p>
                             <p>{{ $post->user->name }}</p>

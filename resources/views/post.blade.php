@@ -22,7 +22,7 @@
 		@endauth
 
 		<h3>{{ $post->user->name }}</h3>
-		<img src="{{ 'storage/'.$post->image }}" width="300" height="300" />
+		<img src="{{ '/storage/'.$post->image }}" width="300" height="300" />
 		<h2>{{ $post->title }}</h3>
 			<p>{{ $post->caption }}</p>
 			@auth
@@ -31,7 +31,7 @@
 			<p>{{ $comment->comment}}</p>
 			@endforeach
 			<p>{{'Add your comment...'}}</p>
-			<form action="/brian/public/addComment" method="post" enctype="multipart/form-data">
+			<form action="/addComment" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<p> <textarea name="comment"> </textarea></p>
 				<input type="hidden" name="post_id" value="{{ $post->id }}">
@@ -42,4 +42,4 @@
 			@endauth
 		</div>
 	</div>
-	@endsection
+@endsection
