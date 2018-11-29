@@ -51,8 +51,8 @@ class HomeController extends Controller
             array_push($categoriesIds, $cat->id);
         }
 
-        $posts = Post::whereHas('categories', function($q) use ($categoriesIds) {
-            $q->whereIn('category_id', $categoriesIds);
+        $posts = Post::whereHas('category', function($q) use ($categoriesIds) {
+            $q->whereIn('id', $categoriesIds);
         })->paginate(10);
 
 

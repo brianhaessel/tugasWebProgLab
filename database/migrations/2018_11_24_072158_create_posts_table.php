@@ -22,9 +22,11 @@ class CreatePostsTable extends Migration
             $table->integer('price');
             $table->string('image');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('category_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
 
         Schema::enableForeignKeyConstraints();
@@ -37,6 +39,7 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('post_comments');
         Schema::dropIfExists('posts');
     }
 }

@@ -15,8 +15,8 @@ class Post extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function categories() {
-        return $this->belongsToMany('App\Category', 'post_category_details');
+    public function category() {
+        return $this->belongsTo('App\Category');
     }
 
     public function transactions() {

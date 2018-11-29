@@ -17,14 +17,6 @@ class PostSeeder extends Seeder
     {
         factory(Post::class, 20)->create();
 
-        $categories = Category::all();
-
-        Post::all()->each(function ($post) use ($categories) {
-            $post->categories()->attach(
-                $categories->random(random_int(1, 3))->pluck('id')->toArray()
-            );
-        });
-
         $users = User::all();
         $faker = Faker\Factory::create();
         Post::all()->each(function ($post) use ($users, $faker) {

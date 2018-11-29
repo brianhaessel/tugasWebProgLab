@@ -26,7 +26,7 @@
                             <a href="{{ '/post/'.$post->id }}">
                                 <img src="{{ '/storage/'.$post->image }}" width="256" height="256" />
                             </a>
-                            <p>{{ $post->title }}</p>
+                            <h4><b>{{ $post->title }}</b></h4>
                             <p>{{ $post->user->name }}</p>
                         </div>
                     @endforeach

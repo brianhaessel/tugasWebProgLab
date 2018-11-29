@@ -8,7 +8,7 @@ class Category extends Model
 {
     
     public function posts() {
-        return $this->belongsToMany('App\Post', 'post_category_details');
+        return $this->hasMany('App\Post', 'post_category_details');
     }
 
     public function followedBy() {
