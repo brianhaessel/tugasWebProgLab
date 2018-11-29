@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
         $user->email = $name.'@yahoo.com';
         $user->password = bcrypt($name);
         $user->gender = 'Male';
-        $user->profile_picture = $name.'.png';
+        $user->profile_picture = 'sample.png';
 
         $user->save();
     }

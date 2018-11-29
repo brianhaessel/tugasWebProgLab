@@ -13,7 +13,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'title' => $title,
         'caption' => $caption,
         'price' => random_int(10000, 100000),
-        'image' => str_random(10).'.png',
+        'image' => 'sample.png',
         'user_id' => random_int(1, $userCount)
     ];
 });

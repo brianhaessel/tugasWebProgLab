@@ -31,7 +31,7 @@ class PostSeeder extends Seeder
             $post->comments()->attach(
                 random_int(1, $users->count()),
                 [
-                    'comment' => $faker->realText(10)
+                    'comment' => $faker->realText(100)
                 ]
             );
         });
