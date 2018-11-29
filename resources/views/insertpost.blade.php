@@ -49,15 +49,15 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
-                            <label for="photo" class="col-md-4 control-label">Photo</label>
+                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                            <label for="image" class="col-md-4 control-label">Image</label>
 
                             <div class="col-md-6">
-                                <input type="file" class="form-control" name="photo" value="{{ old('photo') }}" required autofocus>
+                                <input type="file" class="form-control" name="image" value="{{ old('image') }}" required autofocus>
                                 
-                                @if ($errors->has('photo'))
+                                @if ($errors->has('image'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('photo') }}</strong>
+                                        <strong>{{ $errors->first('image') }}</strong>
                                     </span>
                                 @endif
                             </div>
