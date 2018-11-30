@@ -14,7 +14,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+
+        return view('manageCategories', compact('categories'));
+    }
+    public function addCategory(){
+        return view('insertCategory');
     }
 
     /**
@@ -35,7 +40,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'name' => 'required|string|min:5|max:10',
+            ]);
+
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect('/manageCategory');
     }
 
     /**
@@ -81,5 +94,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+    public function categories(){
     }
 }

@@ -42,4 +42,13 @@ class UserController extends Controller
         $user = Auth::user();
         return view('followedCategories',compact('user'));
     }
+    public function transactionHistory(){
+        return view('transactionHistory');
+    }
+    public function manageUser(){
+        return view('manageUser');
+    }
+    // public function manageCategory(){
+    //     return view('manageCategories');
+    // }
 }

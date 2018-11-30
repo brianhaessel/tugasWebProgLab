@@ -17,6 +17,9 @@ class TransactionController extends Controller
         //
         return view('cart');
     }
+    public function allTransaction(){
+        return view('allTransaction');
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -38,7 +38,7 @@
                         Pintester
                         <!-- {{ config('app.name', 'Laravel') }} -->
                     </a>
-                    <form action="/home/search" method="GET">
+                    <form action="{{url('/home/search')}}" method="GET">
                         <input id="search" type="text" class="form-control" name="search" value="{{ old('search') }}" placeholder="Search a post" required autofocus>
                         <button type="submit">Search</button>
                     </form>
@@ -68,8 +68,8 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="">Users</a>
-                                        <a href="">Categories</a>
+                                        <a href="{{route('manage_user')}}">Users</a>
+                                        <a href="{{route('manage_category')}}">Categories</a>
                                     </li>
                                 </ul>
                             </li>
@@ -80,7 +80,7 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="">View All Transaction</a>
+                                        <a href="{{route('all_transaction')}}">View All Transaction</a>
                                     </li>
                                 </ul>
                             </li>
@@ -101,11 +101,13 @@
                                     document.getElementById('logout-form').submit();">
                                     Logout
                                     </a>
-                                    <a href="{{ url('/profile') }}">Profile</a>
+                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
+                                    <a href="{{ url('/profile') }}">Profile</a>
+                                    <a href="{{route ('transaction_history')}}">Transaction History</a>
                                 </li>
                             </ul>
                         </li>
