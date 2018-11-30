@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form class="form-horizontal" action="/insert" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="{{ route('insert') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">

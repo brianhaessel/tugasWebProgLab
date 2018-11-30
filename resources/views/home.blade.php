@@ -11,9 +11,9 @@
         <div class="row">
             @auth
                 @if (Route::currentRouteName() == 'home')
-                    <a href="{{ url('/followed_categories') }}">Filter by My Followed Categories</a>
-                @elseif (Route::currentRouteName() == 'followed_catagories')
-                    <a href="{{ url('/home') }}">View All</a>
+                    <a href="{{ route('followed_categories') }}">Filter by My Followed Categories</a>
+                @elseif (Route::currentRouteName() == 'followed_categories')
+                    <a href="{{ route('home') }}">View All</a>
                 @elseif (Route::currentRouteName() == 'myposts')
                     <div class="contentSeg" >
                         <form action="{{url('/add')}}" method="GET">
@@ -29,8 +29,8 @@
                 <div>
                     @foreach($posts as $post)
                         <div class="post" >
-                            <a href="{{ '/post/'.$post->id }}">
-                                <img src="{{ '/storage/'.$post->image }}" width="256" height="256" />
+                            <a href="{{ url('/post/'.$post->id) }}">
+                                <img src="{{ url('/storage/'.$post->image) }}" width="256" height="256" />
                             </a>
                             <h4><b>{{ $post->title }}</b></h4>
                             <p>{{ $post->user->name }}</p>

@@ -11,7 +11,7 @@
 				<table>
                     <tr>
                         <td rowspan="2">
-                            <img src="{{ '/storage/'.$user->profile_picture }}" width="256" height="256"/>
+                            <img src="{{ url('/storage/'.$user->profile_picture) }}" width="256" height="256"/>
                         </td>
                         <td><h1>{{ Auth::user()->name }}</h1></td>
                     </tr>

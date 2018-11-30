@@ -15,7 +15,7 @@
 				<button type="submit">Add to Cart</button>
 			@endif
 			@if (Gate::check('isAdmin') || Auth::id() === $post->user_id)
-				<form action="/deletePost" method="post">
+				<form action="{{ route('delete') }}" method="post">
 					{{ csrf_field() }}
 					<input type="hidden" name="post_id" value="{{ $post->id }}">
 					<button type="submit">Delete Post</button>
@@ -26,7 +26,7 @@
 		<h2>{{ $post->title }}</h3>
 		<p>{{ $post->category->name }}</p>
 		<div class="postImage">
-			<img src="{{ '/storage/'.$post->image }}" />
+			<img src="{{ url('/storage/'.$post->image) }}" />
 		</div>
 		<p>{{ $post->caption }}</p>
 		@auth
@@ -34,7 +34,7 @@
 			@foreach($post_comments as $comment)
 				<div class="comment">
 					<div class="commenterPP">
-						<img src="{{ '/storage/'.$comment->user->profile_picture }}" width="32" height="32" class="pp">
+						<img src="{{ url('/storage/'.$comment->user->profile_picture) }}" width="32" height="32" class="pp">
 						<b>{{ $comment->user->name }}</b>
 					</div>
 				
@@ -42,7 +42,7 @@
 				</div>
 			@endforeach
 			<p>{{'Add your comment...'}}</p>
-			<form action="/addComment" method="post" enctype="multipart/form-data">
+			<form action="{{ url('/addComment') }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				
 				<textarea class="form-control" name="comment" style="width: 100%;" required></textarea>

@@ -18,13 +18,13 @@ Route::get('/', function() {
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/search', 'HomeController@search')->name('search');
-Route::get('/followed_categories', 'HomeController@followedCategories')->name('followed_catagories');
+Route::get('/followed_categories', 'HomeController@followedCategories')->name('followed_categories');
 Route::get('/cart', 'TransactionController@index')->name('cart');
 Route::get('/myposts', 'HomeController@myPosts')->name('myposts');
 Route::get('/add', 'PostController@add');
-Route::post('/insert', 'PostController@store');
+Route::post('/insert', 'PostController@store')->name('insert');
 Route::get('/post/{id}', 'PostController@view');
 Route::post('/addComment', 'PostController@addComment');
 Route::get('/profile', 'UserController@profile');
 Route::get('/followedCategories', 'UserController@followedCategories');
-Route::post('/deletePost', 'PostController@delete');
+Route::post('/deletePost', 'PostController@delete')->name('delete');
