@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Category;
+use App\FollowCategory;
 class UserController extends Controller
 {
     public function welcome() {
@@ -40,7 +42,14 @@ class UserController extends Controller
     }
     public function followedCategories(){
         $user = Auth::user();
-        return view('followedCategories',compact('user'));
+        $categories = Category::all();
+        $followed_ids = [];
+
+        foreach ($user->followedCategories as $cat) {
+            array_push($followed_ids, $cat->id);
+        }
+
+        return view('followedCategories',compact('user', 'categories', 'followed_ids'));
     }
     public function transactionHistory(){
         return view('transactionHistory');
@@ -65,6 +74,30 @@ class UserController extends Controller
         $user->gender = $request->gender;
 
         $user->save();
+    }
+
+    public function updateFollowCategory(Request $request) {
+        $categories = Category::all();
+
+        foreach ($categories as $cat) {
+            $checked = $request->input('cat'.$cat->id);
+
+            if ($checked) {
+                $existingData = FollowCategory::firstOrNew(['category_id' => $cat->id, 'user_id' => Auth::user()->id]);
+                $existingData->user_id = Auth::user()->id;
+                $existingData->category_id = $cat->id;
+                $existingData->save();
+            } else {
+                
+                $existingData = FollowCategory::where('category_id', $cat->id)->where('user_id', Auth::user()->id)->first();
+                if ($existingData != null) {
+                    $existingData->delete();
+                }
+            }
+            
+        }
+
+        return back();
     }
     // public function manageCategory(){
     //     return view('manageCategories');

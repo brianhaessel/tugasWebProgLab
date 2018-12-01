@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function() {
 
 	// User
 	Route::patch('/updateProfile', 'UserController@update')->name('updateProfile');
+	Route::post('/updateFollowCategory', 'UserController@updateFollowCategory')->name('updateFollowCategory');
 });
 
 // Accessible by Admin

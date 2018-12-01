@@ -24,6 +24,30 @@
                	        <a href="{{ url('/profile') }}">Profile</a>
                         <button type="submit" class="btn btn-primary">Categories</button>
                     </div>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <form class="form-horizontal" action="{{ route('updateFollowCategory') }}" method="post">
+                                {{ csrf_field() }}
+
+                                @foreach ($categories as $cat)
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">{{ $cat->name }}</label>
+
+                                        <div class="col-md-6">
+                                            <input type="checkbox" class="form-control" name="{{ 'cat'.$cat->id }}" {{ in_array($cat->id, $followed_ids) ? 'checked' : '' }}>Following
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <div class="form-group">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>                   
             </div>
         </div>

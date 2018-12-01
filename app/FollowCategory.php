@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class FollowCategory extends Model
 {
+
+    protected $fillable = [
+        'category_id'
+    ];
     
     public function user() {
         return $this->belongsTo('App\User');
