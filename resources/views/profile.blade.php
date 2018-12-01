@@ -32,13 +32,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form class="form-horizontal" method="POST" action="/profile">
+            <form class="form-horizontal" method="POST" action="{{ route('updateProfile') }}">
                 {{ csrf_field() }}
+                {{ method_field('PATCH') }}
                 <div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}">
                     <label for="id" class="col-md-4 control-label">ID : </label>
 
                     <div class="col-md-6">
-                        {{Auth::user()->id}}
+                        <input type="text" name="" class="form-control" value="{{Auth::user()->id}}" disabled>
                     </div>
                 </div>
 
@@ -46,15 +47,26 @@
                     <label for="name" class="col-md-4 control-label">Name : </label>
 
                     <div class="col-md-6">
-                        <input type="text" name="" value="{{Auth::user()->name}}">
+                        <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}">
+                        @if ($errors->has('name'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
                     </div>
+                   
                 </div>
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="col-md-4 control-label">Email : </label>
 
                     <div class="col-md-6">
-                        <input type="text" name="" value="{{Auth::user()->email}}">
+                        <input type="text" name="email" class="form-control" value="{{Auth::user()->email}}">
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
 
@@ -62,7 +74,12 @@
                     <label for="password" class="col-md-4 control-label">Password : </label>
 
                     <div class="col-md-6">
-                        <input type="text" name="" value="{{Auth::user()->password}}">
+                        <input type="password" name="password" class="form-control" value="{{Auth::user()->password}}">
+                        @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
 
@@ -70,17 +87,18 @@
                     <label for="gender" class="col-md-4 control-label">Gender</label>
 
                     <div class="col-md-6">
-                        <input type="text" name="" value="{{Auth::user()->gender}}">
+                        <select name="gender" class="form-control" value="{{Auth::user()->gender}}">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-8 col-md-offset-4">
-                        <!-- <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary">
                             Save Changes
-                        </button> -->
-
-            
+                        </button>
                     </div>
                 </div>
 

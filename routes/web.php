@@ -31,10 +31,14 @@ Route::middleware(['auth'])->group(function() {
 	Route::get('/profile', 'UserController@profile');
 	Route::get('/followedCategories', 'UserController@followedCategories');
 	Route::delete('/deletePost/{id}', 'PostController@destroy')->name('delete');
+	// Transactions
 	Route::get('/transactionHistory','UserController@transactionHistory')->name('transaction_history');
 	Route::post('/addToCart/{id}', 'TransactionController@addToCart')->name('addToCart');
 	Route::post('/removeFromCart/{id}', 'TransactionController@removeFromCart')->name('removeFromCart');
 	Route::post('/checkout', 'TransactionController@checkout')->name('checkout');
+
+	// User
+	Route::patch('/updateProfile', 'UserController@update')->name('updateProfile');
 });
 
 // Accessible by Admin

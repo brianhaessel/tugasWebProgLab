@@ -48,6 +48,24 @@ class UserController extends Controller
     public function manageUser(){
         return view('manageUser');
     }
+
+    public function update(Request $request) {
+        $validation = $request->validate([
+            'name' => 'required|string|max:255|min:5',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed|alpha_num',
+            'gender' => 'required',
+        ]);
+
+        $user = Auth::user();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->gender = $request->gender;
+
+        $user->save();
+    }
     // public function manageCategory(){
     //     return view('manageCategories');
     // }
