@@ -27,7 +27,7 @@
         <div class="row">
             <!-- <a href="{{ url('/home') }}">Filter by My Followed Categories</a> -->
             <div class="contentSeg" id="postSection" >
-                Items in cart: {{ '0'}}
+                Items in cart: {{ $posts->count() }}
             </div>
 
         </div>
@@ -37,15 +37,31 @@
         <div class="row">
         <!-- <a href="{{ url('/home') }}">Filter by My Followed Categories</a> -->
             <div class="contentSeg" id="postSection" >
-                a
+                @foreach ($posts as $post)
+                    <div style="padding: 4px; display:block;">
+                        <img src="{{ url('/storage/'.$post->image) }}" width="128" height="128">
+                        <div>
+                            Title: {{ $post->title }}<br>
+                            Price: {{ $post->price }}<br>
+                            Owner: {{ $post->user->name }}<br>
+                            <form action="{{ route('removeFromCart', [$post->id]) }}" method="post">
+                                {{ csrf_field() }}
+                                <button type="submit">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            Total Price: Rp. {{ '0'}} <button type="submit">Checkout</button>
+            Total Price: Rp. {{ $posts->sum('price') }}
+            <form action="{{ route('checkout') }}" method="post">
+                {{ csrf_field() }}
+                <button type="submit">Checkout</button>
+            </form>
         </div>
     </div>
 @endsection

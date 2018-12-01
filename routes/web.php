@@ -32,7 +32,9 @@ Route::middleware(['auth'])->group(function() {
 	Route::get('/followedCategories', 'UserController@followedCategories');
 	Route::delete('/deletePost/{id}', 'PostController@destroy')->name('delete');
 	Route::get('/transactionHistory','UserController@transactionHistory')->name('transaction_history');
-	
+	Route::post('/addToCart/{id}', 'TransactionController@addToCart')->name('addToCart');
+	Route::post('/removeFromCart/{id}', 'TransactionController@removeFromCart')->name('removeFromCart');
+	Route::post('/checkout', 'TransactionController@checkout')->name('checkout');
 });
 
 // Accessible by Admin

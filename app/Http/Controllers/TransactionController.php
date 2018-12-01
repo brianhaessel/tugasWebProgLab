@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use Illuminate\Http\Request;
+use App\Post;
+use App\TransactionDetail;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -14,11 +18,48 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
-        return view('cart');
+        $post_ids = session()->get('id', []);
+        
+        $posts = Post::whereIn('id', $post_ids)->get();
+
+        return view('cart', compact('posts'));
     }
     public function allTransaction(){
         return view('allTransaction');
+    }
+
+    public function addToCart($id) {
+        session()->push('id', $id);
+        
+        return back();
+    }
+
+    public function removeFromCart($id) {
+        $post_ids = session()->get('id', []);
+        $index = array_search($id, $post_ids);
+
+        session()->pull('id.'.$index);
+
+        return back();
+    }
+
+    public function checkout() {
+        $post_ids = session()->get('id', []);
+
+        $transaction = new Transaction();
+        $transaction->transaction_date = Carbon::now();
+        $transaction->user_id = Auth::user()->id;
+        $transaction->save();
+
+        foreach ($post_ids as $post_id) {
+            $detail = new TransactionDetail();
+            $detail->transaction_id = $transaction->id;
+            $detail->post_id = $post_id;
+            $detail->save();
+        }
+
+        session()->forget('id');
+        return back();
     }
 
     /**
