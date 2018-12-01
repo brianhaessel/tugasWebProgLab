@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function() {
 	Route::post('/addComment', 'PostController@addComment');
 	Route::get('/profile', 'UserController@profile');
 	Route::get('/followedCategories', 'UserController@followedCategories');
-	Route::post('/deletePost', 'PostController@delete')->name('delete');
+	Route::delete('/deletePost/{id}', 'PostController@destroy')->name('delete');
 	Route::get('/transactionHistory','UserController@transactionHistory')->name('transaction_history');
 	
 });

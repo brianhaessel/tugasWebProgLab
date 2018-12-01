@@ -79,14 +79,6 @@ class PostController extends Controller
         return view('post', compact('post','post_comments'));
     }
 
-
-    public function delete(Request $request) {
-        $post = Post::where('id', $request->post_id);
-        $post->delete();
-
-        return redirect('/myposts');
-    }
-
     /**
      * Display the specified resource.
      *
@@ -127,8 +119,11 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
+        $post = Post::where('id', $id);
+        $post->delete();
 
+        return redirect('/myposts');
     }
 }
