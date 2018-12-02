@@ -49,3 +49,21 @@
 	padding: 4px;
 	border-bottom: 1px gray solid;
 }
+
+.perTransaction {
+	padding: 10px;
+	padding-bottom: 50px;
+}
+
+.transactionTable {
+	margin: auto;
+	width: 100%;
+}
+
+.transactionTable td {
+	padding: 8px;
+}
+
+.transactionHeader {
+	border-bottom: 1px black solid;
+}

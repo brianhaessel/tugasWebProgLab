@@ -22,22 +22,24 @@ Route::get('/post/{id}', 'PostController@view');
 
 // Accessible by User/Admin
 Route::middleware(['auth'])->group(function() {
+	// Posts/Home
 	Route::get('/followed_categories', 'HomeController@followedCategories')->name('followed_categories');
-	Route::get('/cart', 'TransactionController@index')->name('cart');
 	Route::get('/myposts', 'HomeController@myPosts')->name('myposts');
 	Route::get('/add', 'PostController@add');
 	Route::post('/insert', 'PostController@store')->name('insert');
 	Route::post('/addComment', 'PostController@addComment');
-	Route::get('/profile', 'UserController@profile');
-	Route::get('/followedCategories', 'UserController@followedCategories');
 	Route::delete('/deletePost/{id}', 'PostController@destroy')->name('delete');
+
 	// Transactions
-	Route::get('/transactionHistory','UserController@transactionHistory')->name('transaction_history');
+	Route::get('/cart', 'TransactionController@index')->name('cart');
+	Route::get('/transactionHistory','TransactionController@transactionHistory')->name('transaction_history');
 	Route::post('/addToCart/{id}', 'TransactionController@addToCart')->name('addToCart');
 	Route::post('/removeFromCart/{id}', 'TransactionController@removeFromCart')->name('removeFromCart');
 	Route::post('/checkout', 'TransactionController@checkout')->name('checkout');
 
 	// User
+	Route::get('/profile', 'UserController@profile');
+	Route::get('/followedCategories', 'UserController@followedCategories');
 	Route::patch('/updateProfile', 'UserController@update')->name('updateProfile');
 	Route::post('/updateFollowCategory', 'UserController@updateFollowCategory')->name('updateFollowCategory');
 });

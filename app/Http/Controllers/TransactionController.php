@@ -62,6 +62,12 @@ class TransactionController extends Controller
         return back();
     }
 
+    public function transactionHistory(){
+        $transactions = Auth::user()->transactions()->paginate(5);
+        
+        return view('transactionHistory', compact('transactions'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

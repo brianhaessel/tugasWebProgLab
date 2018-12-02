@@ -51,9 +51,7 @@ class UserController extends Controller
 
         return view('followedCategories',compact('user', 'categories', 'followed_ids'));
     }
-    public function transactionHistory(){
-        return view('transactionHistory');
-    }
+    
     public function manageUser(){
         return view('manageUser');
     }
