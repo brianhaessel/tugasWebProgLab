@@ -25,7 +25,9 @@ class TransactionController extends Controller
         return view('cart', compact('posts'));
     }
     public function allTransaction(){
-        return view('allTransaction');
+        $transactions = Transaction::paginate(5);
+        
+        return view('transactionHistory', compact('transactions'));
     }
 
     public function addToCart($id) {
