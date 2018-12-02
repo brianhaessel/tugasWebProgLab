@@ -40,6 +40,12 @@ class UserController extends Controller
         return view('profile', compact('user'));
 
     }
+
+    public function editUser($id) {
+        $user = User::find($id);
+        return view('profile', compact('user'));
+    }
+
     public function followedCategories(){
         $user = Auth::user();
         $categories = Category::all();
@@ -60,20 +66,43 @@ class UserController extends Controller
     public function update(Request $request) {
         $user = Auth::user();
 
-        $validation = $request->validate([
-            'name' => 'required|string|max:255|min:5',
-            'email' => 'required|string|email|max:255|unique:users,id,'.$user->id,
-            'password' => 'required|string|min:8|alpha_num',
-            'gender' => 'required',
-        ]);
+        if ($request->button_submit == 'save') {
+            $validation = $request->validate([
+                'name' => 'required|string|max:255|min:5',
+                'email' => 'required|string|email|max:255|unique:users,id,'.$user->id,
+                'password' => 'required|string|min:8|alpha_num',
+                'gender' => 'required',
+            ]);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->gender = $request->gender;
 
-        $user->save();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->gender = $request->gender;
 
+            $user->save();
+        }
+  
+        return back();
+    }
+
+    public function updateAdmin(Request $request, User $user) {
+        if ($request->button_submit == 'save') {
+            $validation = $request->validate([
+                'name' => 'required|string|max:255|min:5',
+                'email' => 'required|string|email|max:255|unique:users,id,'.$user->id,
+                'gender' => 'required',
+            ]);
+
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->gender = $request->gender;
+
+            $user->save();
+        } else if ($request->button_submit == 'discard') {
+            return redirect()->route('manage_user');
+        }
+  
         return back();
     }
 
@@ -99,6 +128,12 @@ class UserController extends Controller
         }
 
         return back();
+    }
+    
+    public function delete(User $user) {
+        $user->delete();
+
+        return redirect()->route('manage_user');
     }
     // public function manageCategory(){
     //     return view('manageCategories');

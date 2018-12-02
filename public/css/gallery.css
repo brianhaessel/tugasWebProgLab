@@ -55,6 +55,10 @@
 	padding-bottom: 50px;
 }
 
+.profileTable {
+	margin:auto;
+}
+
 .fullTable {
 	margin: auto;
 	width: 100%;

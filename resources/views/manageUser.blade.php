@@ -24,7 +24,7 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->gender }}</td>
-                                <td><a href="{{ route('edit_user') }}">Edit</a></td>
+                                <td><a href="{{ route('edit_user', [$user->id]) }}">Edit</a></td>
                             </tr>
                         @endif
                     @endforeach

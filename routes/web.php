@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function() {
 	Route::post('/checkout', 'TransactionController@checkout')->name('checkout');
 
 	// User
-	Route::get('/profile', 'UserController@profile');
+	Route::get('/profile', 'UserController@profile')->name('profile');
 	Route::get('/followedCategories', 'UserController@followedCategories');
 	Route::patch('/updateProfile', 'UserController@update')->name('updateProfile');
 	Route::post('/updateFollowCategory', 'UserController@updateFollowCategory')->name('updateFollowCategory');
@@ -52,5 +52,7 @@ Route::middleware(['admin'])->group(function() {
 	Route::get('/addCategory','CategoryController@addCategory')->name('add_category');
 	Route::post('/insertCategory', 'CategoryController@store')->name('insert_category');
 
-	Route::get('/editUser', 'UserController@editUser')->name('edit_user');
+	Route::get('/editUser/{id}', 'UserController@editUser')->name('edit_user');
+	Route::patch('/updateProfile/{user}', 'UserController@updateAdmin')->name('updateProfileAdmin');
+	Route::delete('/deleteUser/{user}', 'UserController@delete')->name('delete_user');
 });
