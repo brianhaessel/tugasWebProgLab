@@ -93,7 +93,7 @@ class UserController extends Controller
     public function updateAdmin(Request $request, User $user) {
         if ($request->button_submit == 'save') {
             $validation = $request->validate([
-                'name' => 'required|string|max:255|min:5',
+                'name' => 'required|string|min:5',
                 'email' => 'required|string|email|max:255|unique:users,id,'.$user->id,
                 'gender' => 'required',
             ]);
