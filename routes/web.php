@@ -51,4 +51,6 @@ Route::middleware(['admin'])->group(function() {
 	Route::get('/allTransaction', 'TransactionController@allTransaction')->name('all_transaction');
 	Route::get('/addCategory','CategoryController@addCategory')->name('add_category');
 	Route::post('/insertCategory', 'CategoryController@store')->name('insert_category');
+
+	Route::get('/editUser', 'UserController@editUser')->name('edit_user');
 });

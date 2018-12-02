@@ -53,18 +53,19 @@ class UserController extends Controller
     }
     
     public function manageUser(){
-        return view('manageUser');
+        $users = User::all();
+        return view('manageUser', compact('users'));
     }
 
     public function update(Request $request) {
+        $user = Auth::user();
+
         $validation = $request->validate([
             'name' => 'required|string|max:255|min:5',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed|alpha_num',
+            'email' => 'required|string|email|max:255|unique:users,id,'.$user->id,
+            'password' => 'required|string|min:8|alpha_num',
             'gender' => 'required',
         ]);
-
-        $user = Auth::user();
 
         $user->name = $request->name;
         $user->email = $request->email;
@@ -72,6 +73,8 @@ class UserController extends Controller
         $user->gender = $request->gender;
 
         $user->save();
+
+        return back();
     }
 
     public function updateFollowCategory(Request $request) {
