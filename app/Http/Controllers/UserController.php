@@ -45,6 +45,10 @@ class UserController extends Controller
         $user = User::find($id);
         return view('profile', compact('user'));
     }
+    public function editCategory($id){
+        $category = Category::find($id);
+        return view('updateCategory', compact('category'));
+    }
 
     public function followedCategories(){
         $user = Auth::user();
@@ -106,6 +110,17 @@ class UserController extends Controller
         return back();
     }
 
+    public function updateCategoryy(Request $request, Category $category){
+        
+            $validation = $request->validate([
+                'name' => 'required|string|max:10|min:4',
+            ]);
+            $category->name = $request->name;
+            $category->save();
+        
+        return back();
+    }
+
     public function updateFollowCategory(Request $request) {
         $categories = Category::all();
 
@@ -134,6 +149,10 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('manage_user');
+    }
+    public function deleteCategory(Category $category){
+        $category->delete();
+        return back();
     }
     // public function manageCategory(){
     //     return view('manageCategories');
