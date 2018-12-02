@@ -16,11 +16,11 @@
                             Total Price: {{ $transaction->posts->sum('price') }}<br>
                             Transaction Date: {{ $transaction->transaction_date }}
                         </p>
-                        <table class="transactionTable">
-                            <tr class="transactionHeader">
-                                <td><b>Image</b></td>
-                                <td><b>Name</b></td>
-                                <td><b>Price</b></td>
+                        <table class="fullTable">
+                            <tr class="tablenHeader">
+                                <td>Image</td>
+                                <td>Name</td>
+                                <td>Price</td>
                             </tr>
                             @foreach ($transaction->posts as $post)
                                 <tr>

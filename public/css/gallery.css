@@ -55,15 +55,16 @@
 	padding-bottom: 50px;
 }
 
-.transactionTable {
+.fullTable {
 	margin: auto;
 	width: 100%;
 }
 
-.transactionTable td {
+.fullTable td {
 	padding: 8px;
 }
 
-.transactionHeader {
+.tableHeader {
+	font-weight: bold;
 	border-bottom: 1px black solid;
 }
