@@ -18,7 +18,7 @@
 				</form>
 			@endif
 			@if (Gate::check('isAdmin') || Auth::id() === $post->user_id)
-				<form action="{{ route('delete', [$post->id]) }}" method="post">
+				<form action="{{ route('delete', [$post]) }}" method="post">
 					{{ csrf_field() }}
 					{{ method_field('DELETE') }}
 					<button type="submit">Delete Post</button>
