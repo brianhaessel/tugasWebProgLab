@@ -95,7 +95,9 @@
 
                             <ul class="dropdown-menu">
                                 <li>
-
+                                    <a href="{{ url('/profile') }}">Profile</a>
+                                    <a href="{{route ('transaction_history')}}">Transaction History</a>
+                                    
                                     <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
@@ -106,8 +108,6 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
-                                    <a href="{{ url('/profile') }}">Profile</a>
-                                    <a href="{{route ('transaction_history')}}">Transaction History</a>
                                 </li>
                             </ul>
                         </li>
