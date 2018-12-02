@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function() {
 	Route::get('/add', 'PostController@add');
 	Route::post('/insert', 'PostController@store')->name('insert');
 	Route::post('/addComment', 'PostController@addComment');
-	Route::delete('/deletePost/{id}', 'PostController@destroy')->name('delete');
+	Route::delete('/deletePost/{post}', 'PostController@destroy')->name('delete');
 
 	// Transactions
 	Route::get('/cart', 'TransactionController@index')->name('cart');
