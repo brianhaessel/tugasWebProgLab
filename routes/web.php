@@ -55,7 +55,7 @@ Route::middleware(['admin'])->group(function() {
 	Route::get('/editUser/{id}', 'UserController@editUser')->name('edit_user');
 	Route::get('/editCategory/{id}', 'UserController@editCategory')->name('edit_category');
 	Route::patch('/updateProfile/{user}', 'UserController@updateAdmin')->name('updateProfileAdmin');
-	Route::patch('/updateCategory/{category}', 'UserController@updateCategoryy')->name('update_categoryy');
+	Route::patch('/updateCategory/{category}', 'CategoryController@updateCategoryy')->name('update_categoryy');
 	Route::delete('/deleteUser/{user}', 'UserController@delete')->name('delete_user');
 	Route::delete('/deleteCategory/{category}', 'UserController@deleteCategory')->name('delete_category');
 });

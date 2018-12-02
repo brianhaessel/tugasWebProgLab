@@ -113,7 +113,7 @@ class UserController extends Controller
     public function updateCategoryy(Request $request, Category $category){
         
             $validation = $request->validate([
-                'name' => 'required|string|max:10|min:4',
+                'name' => 'required|string|max:20|min:3',
             ]);
             $category->name = $request->name;
             $category->save();
