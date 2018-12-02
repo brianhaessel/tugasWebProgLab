@@ -110,16 +110,7 @@ class UserController extends Controller
         return back();
     }
 
-    public function updateCategoryy(Request $request, Category $category){
-        
-            $validation = $request->validate([
-                'name' => 'required|string|max:10|min:4',
-            ]);
-            $category->name = $request->name;
-            $category->save();
-        
-        return back();
-    }
+
 
     public function updateFollowCategory(Request $request) {
         $categories = Category::all();

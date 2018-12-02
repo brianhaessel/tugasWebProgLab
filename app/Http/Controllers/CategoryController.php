@@ -41,7 +41,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validation = $request->validate([
-            'name' => 'required|string|min:5|max:10',
+            'name' => 'required|string|min:3|max:20',
             ]);
 
         $category = new Category();
@@ -49,6 +49,16 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect('/manageCategory');
+    }
+    public function updateCategoryy(Request $request, Category $category){
+        
+            $validation = $request->validate([
+                'name' => 'required|string|max:20|min:3',
+            ]);
+            $category->name = $request->name;
+            $category->save();
+        
+        return back();
     }
 
     /**
