@@ -11,11 +11,15 @@
 	<div class="postDet">
 		<h3>{{ $post->user->name }}</h3>
 		@auth
-			@if ((Gate::check('isAdmin') || Auth::id() !== $post->user_id) && !in_array($post->id, session()->get('id', [])))
-				<form action="{{ route('addToCart', [$post->id]) }}" method="post">
-					{{ csrf_field() }}
-					<button type="submit">Add to Cart</button>
-				</form>
+			@if (Gate::check('isAdmin') || Auth::id() !== $post->user_id)
+				@if (!in_array($post->id, session()->get('id', [])))
+					<form action="{{ route('addToCart', [$post->id]) }}" method="post">
+						{{ csrf_field() }}
+						<button type="submit">Add to Cart</button>
+					</form>
+				@else
+					Added to cart
+				@endif
 			@endif
 			@if (Gate::check('isAdmin') || Auth::id() === $post->user_id)
 				<form action="{{ route('delete', [$post]) }}" method="post">

@@ -8,6 +8,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                @if (Route::currentRouteName() == 'all_transaction')
+                    <h1>All Transactions</h1>
+                @endif
                 @foreach ($transactions as $transaction)
                     <div class="perTransaction">
                         <p>
