@@ -72,7 +72,7 @@ class UserController extends Controller
 
         if ($request->button_submit == 'save') {
             $validation = $request->validate([
-                'name' => 'required|string|max:255|min:5',
+                'name' => 'required|string|min:5',
                 'email' => 'required|string|email|max:255|unique:users,id,'.$user->id,
                 'password' => 'required|string|min:8|alpha_num',
                 'gender' => 'required',
