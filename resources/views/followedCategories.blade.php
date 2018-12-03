@@ -8,22 +8,24 @@
 	<div class="row">
 		<div class="contentSeg" >
 			<div class="pp">
-				<table>
+                <table class="profileTable">
                     <tr>
                         <td rowspan="2">
-                            <img src="{{ url('/storage/'.$user->profile_picture) }}" width="256" height="256"/>
+                            <img src="{{ url('/storage/'.$user->profile_picture) }}" width="256" height="256" class="pp"/>
                         </td>
-                        <td><h1>{{ Auth::user()->name }}</h1></td>
+                        <td><h1>{{ $user->name }}</h1></td>
                     </tr>
                     <tr>
-                        <td><h3>{{Auth::user()->email}}</h3></td>
+                            <td><h3>{{ $user->email }}</h3></td>
                     </tr>
-                </table>         
+                </table>
+                <br><br>
                 <div class="container">
                     <div class="row">
                	        <a href="{{ url('/profile') }}">Profile</a>
                         <button type="submit" class="btn btn-primary">Categories</button>
                     </div>
+                    <br><br>
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <form class="form-horizontal" action="{{ route('updateFollowCategory') }}" method="post">
