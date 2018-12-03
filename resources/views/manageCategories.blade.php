@@ -21,9 +21,13 @@
                         <td>{{ $category->name }}</td>
                         <td><a href="{{ route('edit_category', [$category->id]) }}">Edit</a></td>
                         <td>
-                            <button type="submit" name="button_submit" onclick="event.preventDefault(); document.getElementById('delete-category').submit();">
-                                Delete User
-                            </button>
+                            <form id="delete-category" action="{{ route('delete_category', [$category]) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button type="submit" name="button_submit">
+                                    Delete
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
@@ -32,10 +36,6 @@
                 <div class="container">
                     <form action="{{route('add_category')}}" method="GET">
                         <button type="submit">ADD</button>
-                    </form>
-                    <form id="delete-category" action="{{ route('delete_category', [$category]) }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
                     </form>
                 </div>
                 

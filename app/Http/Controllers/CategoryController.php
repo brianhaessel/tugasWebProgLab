@@ -61,6 +61,11 @@ class CategoryController extends Controller
         return redirect()->route('manage_category');
     }
 
+    public function deleteCategory(Category $category){
+        $category->delete();
+        return back();
+    }
+
     /**
      * Display the specified resource.
      *

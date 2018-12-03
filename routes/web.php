@@ -57,5 +57,5 @@ Route::middleware(['admin'])->group(function() {
 	Route::patch('/updateProfile/{user}', 'UserController@updateAdmin')->name('updateProfileAdmin');
 	Route::patch('/updateCategory/{category}', 'CategoryController@updateCategoryy')->name('update_categoryy');
 	Route::delete('/deleteUser/{user}', 'UserController@delete')->name('delete_user');
-	Route::delete('/deleteCategory/{category}', 'UserController@deleteCategory')->name('delete_category');
+	Route::delete('/deleteCategory/{category}', 'CategoryController@deleteCategory')->name('delete_category');
 });

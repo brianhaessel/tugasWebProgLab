@@ -141,10 +141,7 @@ class UserController extends Controller
 
         return redirect()->route('manage_user');
     }
-    public function deleteCategory(Category $category){
-        $category->delete();
-        return back();
-    }
+
     // public function manageCategory(){
     //     return view('manageCategories');
     // }
