@@ -58,7 +58,7 @@ class CategoryController extends Controller
             $category->name = $request->name;
             $category->save();
         
-        return back();
+        return redirect()->route('manage_category');
     }
 
     /**
